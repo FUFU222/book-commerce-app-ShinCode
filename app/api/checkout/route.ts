@@ -31,7 +31,11 @@ export async function POST(request: Request) {
       cancel_url: "http://localhost:3000",
     });
     return NextResponse.json({ checkout_url: session.url });
-  } catch(err: any) {
-    return NextResponse.json(err.message)
+  } catch (err: unknown) {
+    if (err instanceof Error) {
+      return NextResponse.json({ error: err.message }, { status: 500 });
+    } else {
+      return NextResponse.json({ error: "An unknown error occurred" }, { status: 500 });
+    }
   }
 }
