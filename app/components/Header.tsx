@@ -1,4 +1,3 @@
-import { signOut} from "next-auth/react";
 import { getServerSession } from "next-auth";
 import { nextAuthOptions } from "../lib/next-auth/options";
 import { User } from "../types/types";
