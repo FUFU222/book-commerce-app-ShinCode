@@ -14,9 +14,9 @@ type BookProps = {
 const Book = ({ book, isPurchased }: BookProps) => {
   const [showModal, setShowModal] = useState(false);
   const { data: session } = useSession();
-  const user: any = session?.user;
+  const user = session?.user;
   const router = useRouter();
-
+  console.log(user);
   const startCheckout = async () => {
     try{
       const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/checkout`,
@@ -26,7 +26,6 @@ const Book = ({ book, isPurchased }: BookProps) => {
           body: JSON.stringify({
             title: book.title,
             price: book.price,
-            userId: user?.id,
             bookId: book.id,
           }),
         }

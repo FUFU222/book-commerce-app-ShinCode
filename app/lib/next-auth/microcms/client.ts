@@ -14,7 +14,7 @@ export const getAllBooks = async () => {
   return allBooks;
 }
 
-export const getDetailBook = async (contentId: string) => {
+export const getDetailBook = async (contentId: string): Promise<BookType> => {
   const detailBook = await client.getListDetail<BookType> ({
     endpoint: "bookcommerce",
     contentId,

@@ -21,9 +21,7 @@ const PurchaseSuccess = () => {
               body: JSON.stringify({ sessionId }),
             }
           );
-          console.log(response);
           const data = await response.json();
-          console.log(data);
           setBookUrl(data.purchase.bookId);
         } catch (error) {
         console.error(error)
@@ -32,7 +30,7 @@ const PurchaseSuccess = () => {
     };
 
     fetchData();
-  }, []);
+  }, [sessionId]);
   return (
     <div className="flex items-center justify-center mt-20">
       <div className="bg-white p-6 rounded-lg shadow-lg">
