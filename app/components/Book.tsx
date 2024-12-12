@@ -16,7 +16,7 @@ const Book = ({ book, isPurchased }: BookProps) => {
   const { data: session } = useSession();
   const user = session?.user;
   const router = useRouter();
-  console.log(user);
+  
   const startCheckout = async () => {
     try{
       const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/checkout`,
