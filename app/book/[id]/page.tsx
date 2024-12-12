@@ -2,14 +2,6 @@ import { getDetailBook } from "@/app/lib/next-auth/microcms/client";
 import Image from "next/image";
 import React from "react";
 
-interface Book {
-  title: string;
-  thumbnail: { url: string };
-  content: string;
-  publishedAt: string; // ISO形式の日付文字列
-  updatedAt: string;   // ISO形式の日付文字列
-}
-
 const DetailBook = async ({ params }: { params: { id:string } }) => {
   const book = await getDetailBook(params.id)
   console.log(book);
