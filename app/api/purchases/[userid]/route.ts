@@ -3,9 +3,9 @@ import { NextResponse } from "next/server";
 
 export async function GET(
   request: Request, 
-  { params }: { params: { userId: string } }
+  { params }: { params: { userid: string } }
 ) {
-  const userId = params.userId;
+  const userId = params.userid;
 
   try {
     const purchases = await prisma.purchase.findMany({
