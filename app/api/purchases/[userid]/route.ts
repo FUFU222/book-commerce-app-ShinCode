@@ -5,11 +5,11 @@ export async function GET(
   request: Request, 
   { params }: { params: { userid: string } }
 ) {
-  const userId = params.userid;
+  const userid = params.userid;
 
   try {
     const purchases = await prisma.purchase.findMany({
-      where: { userId: userId },
+      where: { userId: userid },
     })
     return NextResponse.json(purchases);
   } catch (err) {
