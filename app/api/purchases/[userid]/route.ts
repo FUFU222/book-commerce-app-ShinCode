@@ -19,7 +19,6 @@
 // }
 import prisma from "@/app/lib/next-auth/prisma";
 import { NextResponse } from "next/server";
-import { MdPanoramaFishEye } from "react-icons/md";
 
 export async function GET(
   request: Request,
