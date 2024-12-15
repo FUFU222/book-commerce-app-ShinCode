@@ -19,21 +19,22 @@
 // }
 import prisma from "@/app/lib/next-auth/prisma";
 import { NextResponse } from "next/server";
-import type { NextRequest } from "next/server"; // Next.js の Request 型
 
 export async function GET(
-  request: NextRequest, // Next.js 用の Request 型を使用
-  context: { params: { userid: string } } // 明確に定義された context 型
+  request: Request,
+  context: { params: { userid: string } } // 正しい型
 ) {
-  const { userid } = context.params;
+  const { userid } = context.params; // 動的ルートのパラメータを取得
 
   try {
+    // データベースから該当ユーザーの購入履歴を取得
     const purchases = await prisma.purchase.findMany({
       where: { userId: userid },
     });
-    return NextResponse.json(purchases);
+
+    return NextResponse.json(purchases); // 購入履歴をJSONで返す
   } catch (err) {
-    console.error("Error fetching purchases:", err); // デバッグ用のログ
+    console.error("Error fetching purchases:", err);
     return NextResponse.json({ error: "Failed to fetch purchases" }, { status: 500 });
   }
 }

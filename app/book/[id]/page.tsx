@@ -2,9 +2,14 @@ import { getDetailBook } from "@/app/lib/next-auth/microcms/client";
 import Image from "next/image";
 import React from "react";
 
-const DetailBook = async ({ params }: { params: { id:string } }) => {
-  const book = await getDetailBook(params.id)
-  console.log(book);
+interface DetailBookProps {
+  params: {
+    id: string
+  }
+}
+
+const DetailBook = async ({ params }: DetailBookProps) => {
+  const book = await getDetailBook(params.id);
 
   return (
     <div className="container mx-auto p-4">
