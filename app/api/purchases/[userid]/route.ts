@@ -22,9 +22,9 @@ import { NextResponse } from "next/server";
 
 export async function GET(
   request: Request,
-  {params}: { params: Promise<{ userid: string }>} // 正しい型
+  {params}: { params: { userid: string }} // 正しい型
 ) {
-  const { userid } = await params;// 動的ルートのパラメータを取得
+  const { userid } = params;// 動的ルートのパラメータを取得
 
   try {
     // データベースから該当ユーザーの購入履歴を取得
