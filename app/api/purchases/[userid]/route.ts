@@ -19,12 +19,13 @@
 // }
 import prisma from "@/app/lib/next-auth/prisma";
 import { NextResponse } from "next/server";
+import { MdPanoramaFishEye } from "react-icons/md";
 
 export async function GET(
   request: Request,
-  context: {params: { userid: string } },
+  params: {params: { userid: string } },
 ) {
-  const { userid } = context.params;// 動的ルートのパラメータを取得
+  const { userid } = await params.params;// 動的ルートのパラメータを取得
 
   try {
     // データベースから該当ユーザーの購入履歴を取得
