@@ -22,17 +22,16 @@ import { NextResponse } from "next/server";
 
 export async function GET(
   request: Request,
-  context: {params: { userid: string } },
+  {params}: {params: { userid: string } },
 ) {
-  const { userid } = context.params;// 動的ルートのパラメータを取得
+  const { userid } = params;
 
   try {
-    // データベースから該当ユーザーの購入履歴を取得
     const purchases = await prisma.purchase.findMany({
       where: { userId: userid },
     });
 
-    return NextResponse.json(purchases); // 購入履歴をJSONで返す
+    return NextResponse.json(purchases);
   } catch (err) {
     console.error("Error fetching purchases:", err);
     return NextResponse.json({ error: "Failed to fetch purchases" }, { status: 500 });
