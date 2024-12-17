@@ -25,6 +25,8 @@ export async function GET(
   {params} : {params: Promise<{userid: string }> }
 ) {
   const { userid } = await params;
+  console.log("MICROCMS_API_KEY:", process.env.MICROCMS_API_KEY);
+  console.log("MICROCMS_SERVICE_DOMAIN:", process.env.MICROCMS_SERVICE_DOMAIN);
 
   try {
     const purchases = await prisma.purchase.findMany({
