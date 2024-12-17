@@ -10,7 +10,6 @@ export const getAllBooks = async () => {
   const allBooks = await client.getList<BookType>({
     endpoint: "bookcommerce",
   });
-
   return allBooks;
 }
 
