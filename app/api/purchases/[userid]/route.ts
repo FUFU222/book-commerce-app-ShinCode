@@ -21,10 +21,10 @@ import prisma from "@/app/lib/next-auth/prisma";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(
-  request: NextRequest,
-  {params}: {params: { userid: string } },
+  request: Request,
+  {params} : {params: Promise<{userid: string }> }
 ) {
-  const { userid } = params;
+  const { userid } = await params;
 
   try {
     const purchases = await prisma.purchase.findMany({
