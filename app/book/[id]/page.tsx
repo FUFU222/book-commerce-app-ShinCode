@@ -3,13 +3,12 @@ import Image from "next/image";
 import React from "react";
 
 interface DetailBookProps {
-  params: {
-    id: string
-  }
+  params: Promise<{ id: string }>;
 }
 
 const DetailBook = async ({ params }: DetailBookProps) => {
-  const book = await getDetailBook(params.id);
+  const { id } = await params;
+  const book = await getDetailBook(id);
 
   return (
     <div className="container mx-auto p-4">
