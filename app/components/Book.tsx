@@ -62,7 +62,6 @@ const Book = ({ book, isPurchased }: BookProps) => {
     }
   }
 
-
   return (
     <>
       {/* アニメーションスタイル */}
