@@ -15,8 +15,7 @@ function GithubLoginButton({ providerId }: { providerId: string }) {
         </button>
     );
 }
- 
- 
+
 export default function Login() {
     const [providers, setProviders] = useState<Record<LiteralUnion<BuiltInProviderType, string>, ClientSafeProvider> | null>(null);
  
